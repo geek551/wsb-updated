@@ -31,10 +31,12 @@ function downloadCSV(reports: Report[]) {
   const headers = [
     'id','locationName','issueType','severity','accessibilityImpact',
     'status','reporterType','priorityScore','createdAt','updatedAt','assignedRobot',
-  ]
+  ] as const
+  type CsvKey = (typeof headers)[number]
+
   const rows = reports.map(r =>
-    headers.map(h => {
-      const val = (r as Record<string, unknown>)[h]
+    headers.map((h: CsvKey) => {
+      const val = r[h]
       return typeof val === 'string' ? `"${val.replace(/"/g, '""')}"` : String(val ?? '')
     }).join(',')
   )
