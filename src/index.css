@@ -1,0 +1,123 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Global base styles ── */
+@layer base {
+  body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    @apply bg-gray-50 text-gray-900 antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Lexend Deca', sans-serif;
+  }
+}
+
+/* ── Snowflake animation helpers ── */
+.snow-container {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.snowflake {
+  position: absolute;
+  top: -20px;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 1rem;
+  animation: snowfall linear infinite;
+}
+
+/* Each flake gets unique delays/speeds via inline styles */
+
+/* ── Severity dot helper ── */
+.severity-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+/* ── Map pin pulse ── */
+.map-pin-pulse::after {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  border: 2px solid currentColor;
+  animation: pulse-soft 2s ease-in-out infinite;
+}
+
+/* ── Scrollbar thin ── */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: #f1f1f1; border-radius: 3px; }
+::-webkit-scrollbar-thumb { background: #c5b3e0; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #4F2683; }
+
+/* ── Slider custom styling ── */
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 6px;
+  border-radius: 3px;
+  background: #e5e7eb;
+  outline: none;
+}
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #4F2683;
+  cursor: pointer;
+  border: 2px solid white;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.3);
+}
+input[type="range"]::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #4F2683;
+  cursor: pointer;
+  border: 2px solid white;
+}
+
+/* ── Step form progress ── */
+.step-connector {
+  flex: 1;
+  height: 2px;
+  background: #e5e7eb;
+  transition: background 0.3s;
+}
+.step-connector.active {
+  background: #4F2683;
+}
+
+/* ── Activity timeline ── */
+.timeline-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #4F2683;
+  border: 2px solid white;
+  box-shadow: 0 0 0 2px #4F2683;
+  flex-shrink: 0;
+}
+
+/* ── Table row hover ── */
+.report-row:hover {
+  background-color: #faf7ff;
+}
+
+/* ── Card hover lift ── */
+.card-hover {
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.card-hover:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(79, 38, 131, 0.12);
+}
